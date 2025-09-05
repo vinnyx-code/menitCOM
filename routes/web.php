@@ -26,6 +26,8 @@ use illuminate\Support\Facades\Auth;
 Route::get('/', [WebController::class, 'index'])->name('web.index');
 Route::get('/berita/{slug}', [WebController::class, 'show'])->name('web.show');
 Route::get('/kategori{id}', [WebController::class, 'kategori'])->name('web.kategori');
+Route::get('/berita/{judul}', [BeritaController::class, 'show'])->name('berita.show'); 
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

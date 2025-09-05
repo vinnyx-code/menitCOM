@@ -82,7 +82,7 @@
                                     <nav>
                                         <ul id="navigation">
                                             <li><a href="index.html">Home</a></li>
-                                            <li><a href="categori.html">Category</a></li>
+                                            <li><a href="{{ route('kategori.index') }}">Category</a></li>
                                             <li><a href="about.html">About</a></li>
                                             <li><a href="latest_news.html">Latest News</a></li>
                                             <li><a href="contact.html">Contact</a></li>
@@ -135,17 +135,14 @@
                                 <div class="trending-animated">
                                     <ul id="js-news" class="js-hidden">
                                         <li class="news-item">Gabut?</li>
-                                        <li class="news-item">Baca Berita! ga Mau?</li>
-                                        <li class="news-item">Dih 😒😒😒</li>
+                                        <li class="news-item">Baca Berita!</li>
                                     </ul>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-8">
-
                             @yield('content')
                         </div>
                     </div>
