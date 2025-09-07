@@ -8,6 +8,7 @@
             <div class="text-muted mb-2">
                 <i class="far fa-calendar-alt"></i> {{ $berita->created_at->format('d M Y') }} |
                 <i class="far fa-folder"></i> <a href="{{ route('web.kategori', $berita->kategori->id) }}" class="text-decoration-none">{{ $berita->kategori->nama }}</a>
+                | <i class="far fa-eye"></i> <span class="text-muted">{{ number_format($berita->views ?? 0) }} views</span>
             </div>
             <img src="{{ asset('storage/' . $berita->gambar) }}" class="img-fluid mb-4" alt="{{ $berita->judul }}">
             <div>{!! $berita->isi !!}</div>

@@ -16,7 +16,13 @@ class Berita extends Model
         'gambar',
         'kategori_id',
         'user_id',
+        'views',
     ];
+
+    public function incrementViews()
+    {
+        $this->increment('views');
+    }
 
     public function kategori()
     {

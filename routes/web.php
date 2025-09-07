@@ -30,6 +30,9 @@ Route::post('/comments', [CommentController::class, 'store'])->name('comments.st
 
 Route::get('/', [WebController::class, 'index'])->name('web.index');
 Route::get('/berita/{slug}', [WebController::class, 'show'])->name('web.show');
+Route::get('/berita/{slug}/analisis', [WebController::class, 'analisis'])->name('web.analisis');
+// Analisis index (list of articles)
+Route::get('/analis', [WebController::class, 'analisisIndex'])->name('analis.index');
 Route::get('/kategori/{id}', [WebController::class, 'kategori'])->name('web.kategori');
 Route::get('/berita/{judul}', [BeritaController::class, 'show'])->name('berita.show'); 
 
