@@ -25,7 +25,7 @@
     <div class="col-lg-12">
         <h3 class="mb-3">Comments</h3>
         @auth
-    <form action="{{ route('komentar.store') }}" method="POST" class="mb-4">
+        <form action="{{ route('komentar.store') }}" method="POST" class="mb-4">
             @csrf
             <div class="mb-3">
                 <label for="isi" class="form-label">Add a Comment</label>
@@ -38,11 +38,16 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
         @else
-        <p><a href="{{ route('login') }}">Log in</a> to post a comment.</p>
+        <div class="alert alert-warning">
+            <p><a style="color: red; font-weight: bold;" href="{{ route('register') }}">Register</a>  terlebih dahulu untuk bisa komentar !!</p>
+        </div>
+        <div class="alert alert-warning">
+            <p><a style="color: green; font-weight: bold;" href="{{ route('login') }}">Login</a>  jika sudah ada akun, untuk bisa komentar !!</p>
+        </div>
         @endauth
 
         @if($comments->isEmpty())
-        <p>No comments yet. Be the first to comment!</p>
+        <p>Belum ada komentar.</p>
         @else
         @foreach($comments as $comment)
         <div class="card mb-3">
