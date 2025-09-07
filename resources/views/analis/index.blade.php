@@ -103,4 +103,7 @@
         </div>
     </div>
 </div>
+<button>
+    <a href="{{ route('analis.index') }}" class="btn btn-sm btn-secondary">Kembali</a>
+</button>
 @endsection
