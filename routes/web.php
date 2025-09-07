@@ -11,6 +11,7 @@ use App\Http\Controllers\KategoriPenulisController;
 use App\Http\Controllers\BeritaPenulisController;
 use App\Http\Controllers\WebController;
 use illuminate\Support\Facades\Auth;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +24,13 @@ use illuminate\Support\Facades\Auth;
 |
 */
 
+
+Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
+
+
 Route::get('/', [WebController::class, 'index'])->name('web.index');
 Route::get('/berita/{slug}', [WebController::class, 'show'])->name('web.show');
-Route::get('/kategori{id}', [WebController::class, 'kategori'])->name('web.kategori');
+Route::get('/kategori/{id}', [WebController::class, 'kategori'])->name('web.kategori');
 Route::get('/berita/{judul}', [BeritaController::class, 'show'])->name('berita.show'); 
 
 

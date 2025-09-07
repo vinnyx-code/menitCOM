@@ -81,8 +81,18 @@
                                 <div class="main-menu d-none d-md-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="{{ route('kategori.index') }}">Category</a></li>
+                                            <li><a href="{{ route('web.index') }}">Home</a></li>
+                                            <li><a href="#">Category</a>
+                                                <ul class="submenu">
+                                                    @if(isset($allKategori) && $allKategori->count())
+                                                        @foreach($allKategori as $kat)
+                                                            <li><a href="{{ route('web.kategori', $kat->id) }}">{{ $kat->nama }}</a></li>
+                                                        @endforeach
+                                                    @else
+                                                        <li><a href="#">No categories</a></li>
+                                                    @endif
+                                                </ul>
+                                            </li>
                                             <li><a href="about.html">About</a></li>
                                             <li><a href="latest_news.html">Latest News</a></li>
                                             <li><a href="contact.html">Contact</a></li>

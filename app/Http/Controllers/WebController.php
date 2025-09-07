@@ -16,8 +16,9 @@ class WebController extends Controller
 
     public function show($slug)
     {
-         $berita = Berita::where('slug',$slug)->first();
-        return view('web.show', compact('berita'));
+         $berita = Berita::with(['comments.user','kategori'])->where('slug', $slug)->firstOrFail();
+        $comments = $berita->comments ?? collect();
+        return view('web.show', compact('berita', 'comments'));
     }
 
     public function kategori($id)

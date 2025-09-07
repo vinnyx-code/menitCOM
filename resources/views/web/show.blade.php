@@ -20,5 +20,39 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="mb-3">Comments</h3>
+        @auth
+    <form action="{{ route('komentar.store') }}" method="POST" class="mb-4">
+            @csrf
+            <div class="mb-3">
+                <label for="isi" class="form-label">Add a Comment</label>
+                <textarea name="isi" id="isi" rows="3" class="form-control @error('isi') is-invalid @enderror" required></textarea>
+                @error('isi')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            <input type="hidden" name="berita_id" value="{{ $berita->id }}">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        @else
+        <p><a href="{{ route('login') }}">Log in</a> to post a comment.</p>
+        @endauth
+
+        @if($comments->isEmpty())
+        <p>No comments yet. Be the first to comment!</p>
+        @else
+        @foreach($comments as $comment)
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ $comment->user->name }} <small class="text-muted">{{ $comment->created_at->format('d M Y H:i') }}</small></h5>
+                <p class="card-text">{{ $comment->isi }}</p>
+            </div>
+        </div>
+        @endforeach
+        @endif
+    </div>
+</div>
 
 @endsection

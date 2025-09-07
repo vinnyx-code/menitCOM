@@ -25,6 +25,6 @@ class Berita extends Model
 
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+    return $this->hasMany(Comment::class, 'beritas_id', 'id');
     }
 }

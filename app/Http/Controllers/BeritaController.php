@@ -95,4 +95,17 @@ class BeritaController extends Controller
         return view('web.show', compact('berita'));
         // diperbaiki → pastikan variabel $berita dikirim ke view
     }
+
+    public function comments($id)
+    {
+        $berita = Berita::find($id);
+
+        if (!$berita) {
+            abort(404, 'Berita tidak ditemukan');
+        }
+
+        $comments = $berita->comments()->latest()->get();
+
+        return view('web.comments', compact('berita', 'comments'));
+    }
 }
