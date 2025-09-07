@@ -58,16 +58,19 @@ class WebController extends Controller
         $totalViews = $berita->views ?? 0;
         $detailedViews = BeritaView::where('berita_id', $berita->id)->latest()->limit(20)->get();
 
+    // unique readers based on distinct session_id (approximate)
+    $uniqueReaders = BeritaView::where('berita_id', $berita->id)->distinct('session_id')->count('session_id');
+
         // recent comments
         $recentComments = $berita->comments()->latest()->limit(20)->get();
 
-        return view('analis.index', compact('berita','totalViews','detailedViews','recentComments'));
+    return view('analis.index', compact('berita','totalViews','detailedViews','recentComments','uniqueReaders'));
     }
 
     // list/index of analyses
     public function analisisIndex()
     {
-        $beritaList = Berita::withCount('comments')->latest()->paginate(10);
-        return view('analis.index', compact('beritaList'));
+    $beritaList = Berita::withCount('comments')->latest()->paginate(10);
+    return view('analis.list', compact('beritaList'));
     }
 }
