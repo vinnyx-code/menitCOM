@@ -19,4 +19,6 @@
         <a href="{{ route('web.index') }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to Home</a>
     </div>
 </div>
+
+
 @endsection
