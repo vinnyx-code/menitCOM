@@ -16,44 +16,7 @@
 </div>
 <div class="col-lg-12">
     <div class="mb-3">
-        <!-- Komentar start -->
-        <div class="comments-section mt-5">
-            <div class="d-flex align-items-center justify-content-between mb-3">
-                <h3 class="mb-0">Komentar</h3>
-                <div></div>
-            </div>
-
-            <div class="card shadow-sm border-0 mb-4">
-                <div class="card-body">
-                    <form action="{{ route('komentar.store') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="berita_id" value="{{ $berita->id }}">
-                        <div class="mb-3">
-                            <label for="nama" class="form-label">Nama</label>
-                            <input type="text" class="form-control" id="nama" name="nama" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="isi" class="form-label">Komentar</label>
-                            <textarea class="form-control" id="isi" name="isi" rows="3" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Kirim Komentar</button>
-                    </form>
-                </div>
-            </div>
-
-            @forelse ($berita->komentar as $komentar)
-            <div class="card shadow-sm border-0 mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $komentar->nama }}</h5>
-                    <p class="card-text">{{ $komentar->isi }}</p>
-                </div>
-            </div>
-            @empty
-            <div class="alert alert-info">Belum ada komentar.</div>
-            @endforelse
-        </div>
-        <!-- Komentar end -->
+        <a href="{{ route('web.index') }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to Home</a>
     </div>
-</div>
 </div>
 @endsection
